@@ -1,17 +1,11 @@
 import React from "react"
-import {Link} from "gatsby"
 
-const Header = () => {
+const Footer = () => {
     return (
-        <header>
-            <nav>
-                <ul>
-                    <li><Link to="/">Top</Link></li>
-                    <li><Link to="/author">Author</Link></li>
-                </ul>
-            </nav>
-        </header>
+        <footer>
+            <div>© Shika Blog Site {(new Date()).getFullYear()}</div>
+        </footer>
     )
 }
 
-export default Header
+export default Footer
