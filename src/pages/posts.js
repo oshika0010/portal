@@ -1,21 +1,37 @@
 import React from "react"
-import Layout from "../components/layout"
-import {graphql, Link} from "gatsby";
+import {graphql, Link} from "gatsby"
+import MediaQuery from "react-responsive"
+import MobileLayout from "../components/mobileLayout"
+import PCLayout from "../components/pcLayout"
 
 const PostsTerminal= ({data}) => {
     return (
-        <div>
-            <Layout>
-                {data.allMarkdownRemark.nodes.map(node => (
-                    <div key={node.id}>
-                        <Link to={node.fields.slug}>
-                            <h2>{node.frontmatter.title}</h2>
-                        </Link>
-                        <p>{node.frontmatter.date}</p>
-                    </div>
-                ))}
-            </Layout>
-        </div>
+        <React.Fragment>
+            <MediaQuery query="(min-width: 767px)">
+                    <PCLayout>
+                        {data.allMarkdownRemark.nodes.map(node => (
+                            <div key={node.id}>
+                                <Link to={node.fields.slug}>
+                                    <h2>{node.frontmatter.title}</h2>
+                                </Link>
+                                <p>{node.frontmatter.date}</p>
+                            </div>
+                        ))}
+                    </PCLayout>
+            </MediaQuery>
+            <MediaQuery query="(max-width: 767px)">
+                    <MobileLayout>
+                        {data.allMarkdownRemark.nodes.map(node => (
+                            <div key={node.id}>
+                                <Link to={node.fields.slug}>
+                                    <h2>{node.frontmatter.title}</h2>
+                                </Link>
+                                <p>{node.frontmatter.date}</p>
+                            </div>
+                        ))}
+                    </MobileLayout>
+            </MediaQuery>
+        </React.Fragment>
     )
 }
 

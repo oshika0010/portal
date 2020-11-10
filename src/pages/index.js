@@ -1,27 +1,27 @@
 import React from "react"
-import Layout from "../components/layout"
 import styled from "styled-components"
-import MediaQuery from "react-responsive";
+import MediaQuery from "react-responsive"
+import MobileLayout from "../components/mobileLayout"
+import PCLayout from "../components/pcLayout"
 
 export default function Home() {
     return (
-        <div>
+        <React.Fragment>
             <MediaQuery query="(min-width: 767px)">
                 <BlogWrapper>
-                    <Layout>
+                    <PCLayout>
                         パソコン
-                    </Layout>
+                    </PCLayout>
                 </BlogWrapper>
             </MediaQuery>
-
             <MediaQuery query="(max-width: 767px)">
                 <BlogWrapper>
-                    <Layout>
+                    <MobileLayout>
                         スマホ
-                    </Layout>
+                    </MobileLayout>
                 </BlogWrapper>
             </MediaQuery>
-        </div>
+        </React.Fragment>
     )
 }
 

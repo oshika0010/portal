@@ -3,7 +3,7 @@ import Header from "./header"
 import Footer from "./footer"
 import styled from "styled-components"
 
-const Layout = (props) => {
+const MobileLayout = (props) => {
     return (
         <BlogLayout>
             <Header/>
@@ -22,4 +22,4 @@ const BlogLayout = styled.div`
 `
 
 
-export default Layout
+export default MobileLayout
