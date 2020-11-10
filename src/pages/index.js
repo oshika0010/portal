@@ -1,39 +1,32 @@
 import React from "react"
 import Layout from "../components/layout"
-import {graphql} from "gatsby"
-import {Link} from "gatsby"
+import styled from "styled-components"
+import MediaQuery from "react-responsive";
 
-export default function Home({data}) {
+export default function Home() {
     return (
         <div>
-            <Layout>
-                <h1>Pages</h1>
-                {data.allMarkdownRemark.nodes.map(node => (
-                    <div key={node.id}>
-                        <Link to={node.fields.slug}>
-                            <h2>{node.frontmatter.title}</h2>
-                        </Link>
-                        <p>{node.frontmatter.date}</p>
-                    </div>
-                ))}
-            </Layout>
+            <MediaQuery query="(min-width: 767px)">
+                <BlogWrapper>
+                    <Layout>
+                        パソコン
+                    </Layout>
+                </BlogWrapper>
+            </MediaQuery>
+
+            <MediaQuery query="(max-width: 767px)">
+                <BlogWrapper>
+                    <Layout>
+                        スマホ
+                    </Layout>
+                </BlogWrapper>
+            </MediaQuery>
         </div>
     )
 }
 
-export const query = graphql`
-    query {
-        allMarkdownRemark {
-            nodes {
-                id
-                fields {
-                    slug
-                }
-                frontmatter {
-                    date
-                    title
-                }
-            }
-        }
-    }
+const BlogWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
 `
