@@ -1,11 +1,19 @@
 import React from "react"
+import styled from "styled-components"
 
 const Footer = () => {
     return (
-        <footer>
+        <FooterComponents>
             <div>© Shika Blog Site {(new Date()).getFullYear()}</div>
-        </footer>
+        </FooterComponents>
     )
 }
+
+const FooterComponents = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 3vh;
+`
+
 
 export default Footer

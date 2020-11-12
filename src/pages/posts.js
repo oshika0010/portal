@@ -3,33 +3,42 @@ import {graphql, Link} from "gatsby"
 import MediaQuery from "react-responsive"
 import MobileLayout from "../components/mobileLayout"
 import PCLayout from "../components/pcLayout"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const PostsTerminal= ({data}) => {
+const PostsTerminal = ({data}) => {
     return (
         <React.Fragment>
             <MediaQuery query="(min-width: 767px)">
-                    <PCLayout>
-                        {data.allMarkdownRemark.nodes.map(node => (
-                            <div key={node.id}>
-                                <Link to={node.fields.slug}>
-                                    <h2>{node.frontmatter.title}</h2>
-                                </Link>
-                                <p>{node.frontmatter.date}</p>
-                            </div>
-                        ))}
-                    </PCLayout>
+                <PCLayout>
+                    {data.allMarkdownRemark.nodes.map(node => (
+                        <div key={node.id}>
+                            <AniLink cover
+                                     duration={1}
+                                     bg="#663399"
+                                     direction="down"
+                                     to={node.fields.slug}>
+                                <h2>{node.frontmatter.title}</h2>
+                            </AniLink>
+                            <p>{node.frontmatter.date}</p>
+                        </div>
+                    ))}
+                </PCLayout>
             </MediaQuery>
             <MediaQuery query="(max-width: 767px)">
-                    <MobileLayout>
-                        {data.allMarkdownRemark.nodes.map(node => (
-                            <div key={node.id}>
-                                <Link to={node.fields.slug}>
-                                    <h2>{node.frontmatter.title}</h2>
-                                </Link>
-                                <p>{node.frontmatter.date}</p>
-                            </div>
-                        ))}
-                    </MobileLayout>
+                <MobileLayout>
+                    {data.allMarkdownRemark.nodes.map(node => (
+                        <div key={node.id}>
+                            <Link cover
+                                  duration={1}
+                                  bg="#663399"
+                                  direction="down"
+                                  to={node.fields.slug}>
+                                <h2>{node.frontmatter.title}</h2>
+                            </Link>
+                            <p>{node.frontmatter.date}</p>
+                        </div>
+                    ))}
+                </MobileLayout>
             </MediaQuery>
         </React.Fragment>
     )

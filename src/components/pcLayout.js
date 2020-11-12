@@ -1,24 +1,29 @@
 import React from "react"
-import Header from "./header"
-import Footer from "./footer"
 import styled from "styled-components"
+import PCHeader from "./pcHeader"
 
 const PCLayout = (props) => {
     return (
         <BlogLayout>
-            <Header/>
-            {props.children}
-            <Footer/>
+            <PCHeader/>
+            <ChildrenWrapper>
+                {props.children}
+            </ChildrenWrapper>
         </BlogLayout>
     )
 }
 
 const BlogLayout = styled.div`
+  margin-top: 8vh;
   width: 100vw;
-  height: 100vh;
+  height: 87vh;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+`
+const ChildrenWrapper = styled.div`
+  margin-left: 12vw;
+  width: 88vw;
+  height: 87vh;
 `
 
 

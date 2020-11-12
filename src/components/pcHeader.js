@@ -1,23 +1,10 @@
 import React from "react"
-import {graphql, Link, useStaticQuery} from "gatsby"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const Header = () => {
-    const data = useStaticQuery(
-        graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                    }
-                }
-            }
-        `
-    )
+const PCHeader = () => {
     return (
-        <header>
-            <h2>{data.site.siteMetadata.title}</h2>
+        <PCHeaderComponents>
             <LinkList>
                 <li><AniLink swipe
                              top="exit"
@@ -34,22 +21,34 @@ const Header = () => {
                              duration={1}
                              to="/posts">Posts</AniLink></li>
             </LinkList>
-        </header>
+        </PCHeaderComponents>
     )
 }
 
 const LinkList = styled.ul`
   list-style-type:none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  height: 100%;
+  width: 60%;
   display: flex;
   flex-direction: row;
-  width: 50vw;
   justify-content: space-between;
+  align-items: center;
   
    li {
       margin: 0; 
    }
 `
 
-export default Header
+const PCHeaderComponents = styled.div`
+  height: 5vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 2px 4px gray;
+`
+
+
+export default PCHeader

@@ -3,6 +3,7 @@ import styled from "styled-components"
 import MediaQuery from "react-responsive"
 import MobileLayout from "../components/mobileLayout"
 import PCLayout from "../components/pcLayout"
+import Footer from "../components/footer";
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
                         パソコン
                     </PCLayout>
                 </BlogWrapper>
+                <Footer/>
             </MediaQuery>
             <MediaQuery query="(max-width: 767px)">
                 <BlogWrapper>
@@ -20,6 +22,7 @@ export default function Home() {
                         スマホ
                     </MobileLayout>
                 </BlogWrapper>
+                <Footer/>
             </MediaQuery>
         </React.Fragment>
     )

@@ -13,6 +13,7 @@ module.exports = {
         user: {name: "Tomo Oshika", email: "oshika.tomo@gmail.com"}
     },
     plugins: [
+        `gatsby-plugin-transition-link`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
