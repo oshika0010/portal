@@ -2,7 +2,9 @@ import React, {useCallback, useState} from "react"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {Transition} from "react-transition-group"
-import MenuIcon from "../svg/menuIcon";
+import MenuIcon from "../svg/MenuIcon";
+import {DefaultButton} from "../templates/defaultStyles";
+import CloseIcon from "../svg/CloseIcon";
 
 const MobileHeader = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false)
@@ -16,15 +18,21 @@ const MobileHeader = () => {
             <Transition in={isOpenMenu}>
                 {(state) => (
                     <MobileMenu state={state}>
-                        <button onClick={atatchMenuState}>
-                            {/*<MenuIcon/>*/}
-                        </button>
+                        <CloseIconButton onClick={atatchMenuState}
+                                         state={state}>
+                            <CloseIcon/>
+                        </CloseIconButton>
                     </MobileMenu>
                 )}
             </Transition>
-            <button onClick={atatchMenuState}>
-                {/*<MenuIcon/>*/}
-            </button>
+            <Transition in={isOpenMenu}>
+                {(state) => (
+                    <MenuIconButton onClick={atatchMenuState}
+                                    state={state}>
+                        <MenuIcon/>
+                    </MenuIconButton>
+                    )}
+            </Transition>
             <LinkList>
                 <li><AniLink swipe
                              top="exit"
@@ -58,6 +66,7 @@ const MobileMenu = styled(BaseMenu)`
   transform: translateX(
     ${({state}) => (state === "entering" || state === "entered" ? 80 : 0)}vw
   ); 
+  background-color: white;
 `
 
 const LinkList = styled.ul`
@@ -72,6 +81,21 @@ const LinkList = styled.ul`
    li {
       margin: 0; 
    }
+`
+
+const MenuIconButton = styled(DefaultButton)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition-duration: 0.5s;
+  transform: rotateX(
+   ${({state}) => (state === "entering" || state === "entered" ? "90" : "0")}deg
+  );
+`
+
+const CloseIconButton = styled(DefaultButton)`
+  float: right;
+  transition: 0.5s;
 `
 
 export default MobileHeader

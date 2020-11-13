@@ -19,7 +19,7 @@ export default function Home() {
             <MediaQuery query="(max-width: 767px)">
                 <BlogWrapper>
                     <MobileLayout>
-                        スマホ
+
                     </MobileLayout>
                 </BlogWrapper>
                 <Footer/>
