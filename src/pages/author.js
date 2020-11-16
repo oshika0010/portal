@@ -9,12 +9,10 @@ const AuthorPage = ({data}) => {
         <React.Fragment>
             <MediaQuery query="(min-width: 767px)">
                     <PCLayout>
-                        <h1>{data.site.siteMetadata.author}</h1>
                     </PCLayout>
             </MediaQuery>
             <MediaQuery query="(max-width: 767px)">
                     <MobileLayout>
-                        <h1>{data.site.siteMetadata.author}</h1>
                     </MobileLayout>
             </MediaQuery>
         </React.Fragment>

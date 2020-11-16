@@ -1,6 +1,6 @@
-import React, {useCallback, useState} from "react"
+import {Link} from "gatsby"
+import React, {useState} from "react"
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {Transition} from "react-transition-group"
 import MenuIcon from "../svg/menuIcon"
 import {DefaultButton} from "../templates/defaultStyles"
@@ -12,16 +12,16 @@ import PostsIcon from "../svg/postsIcon"
 const MobileHeader = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
-    const atatchMenuState = useCallback(() => {
+    const attachMenuState = (() => {
         const afterState = !isOpenMenu
         setIsOpenMenu(afterState)
     })
     return (
-        <header>
+        <MobileHeaderWrapper>
             <Transition in={isOpenMenu}>
                 {(state) => (
                     <MobileMenu state={state}>
-                        <CloseIconButton onClick={atatchMenuState}
+                        <CloseIconButton onClick={attachMenuState}
                                          state={state}>
                             <CloseIcon/>
                         </CloseIconButton>
@@ -30,35 +30,35 @@ const MobileHeader = () => {
             </Transition>
             <Transition in={isOpenMenu}>
                 {(state) => (
-                    <MenuIconButton onClick={atatchMenuState}
+                    <MenuIconButton onClick={attachMenuState}
                                     state={state}>
                         <MenuIcon/>
                     </MenuIconButton>
                 )}
             </Transition>
             <LinkList>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/">
+                <li><Link to="/">
                     <HomeIcon/>
-                </AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/author">
+                </Link></li>
+                <li><Link to="/author">
                     <AuthorIcon/>
-                </AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/posts">
+                </Link></li>
+                <li><Link to="/posts">
                     <PostsIcon/>
-                </AniLink></li>
+                </Link></li>
             </LinkList>
-        </header>
+        </MobileHeaderWrapper>
     )
 }
+
+const MobileHeaderWrapper = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  z-index: 100;
+`
 
 const BaseMenu = styled.div`
   width: 80vw;
@@ -78,7 +78,8 @@ const MobileMenu = styled(BaseMenu)`
 
 const LinkList = styled.ul`
   list-style-type:none;
-  margin: 0;
+  margin-left: 25vw;
+  margin-top: 0;
   padding: 0;
   display: flex;
   flex-direction: row;

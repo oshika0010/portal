@@ -3,7 +3,7 @@ import {graphql, Link} from "gatsby"
 import MediaQuery from "react-responsive"
 import MobileLayout from "../components/mobileLayout"
 import PCLayout from "../components/pcLayout"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import styled from "styled-components"
 
 const PostsTerminal = ({data}) => {
     return (
@@ -12,13 +12,9 @@ const PostsTerminal = ({data}) => {
                 <PCLayout>
                     {data.allMarkdownRemark.nodes.map(node => (
                         <div key={node.id}>
-                            <AniLink cover
-                                     duration={1}
-                                     bg="#663399"
-                                     direction="down"
-                                     to={node.fields.slug}>
+                            <Link to={node.fields.slug}>
                                 <h2>{node.frontmatter.title}</h2>
-                            </AniLink>
+                            </Link>
                             <p>{node.frontmatter.date}</p>
                         </div>
                     ))}
@@ -27,16 +23,12 @@ const PostsTerminal = ({data}) => {
             <MediaQuery query="(max-width: 767px)">
                 <MobileLayout>
                     {data.allMarkdownRemark.nodes.map(node => (
-                        <div key={node.id}>
-                            <Link cover
-                                  duration={1}
-                                  bg="#663399"
-                                  direction="down"
-                                  to={node.fields.slug}>
+                        <PostsWrapper key={node.id}>
+                            <Link to={node.fields.slug}>
                                 <h2>{node.frontmatter.title}</h2>
                             </Link>
                             <p>{node.frontmatter.date}</p>
-                        </div>
+                        </PostsWrapper>
                     ))}
                 </MobileLayout>
             </MediaQuery>
@@ -60,5 +52,10 @@ export const query = graphql`
         }
     }
 `
+
+const PostsWrapper = styled.div`
+  margin-top: 8vh;
+`
+
 
 export default PostsTerminal

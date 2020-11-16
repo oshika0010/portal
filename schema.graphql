@@ -614,7 +614,7 @@ type Query {
     site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
     siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
     sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
-    sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
+    sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
 }
 
 type Site implements Node {
@@ -761,6 +761,7 @@ type SitePlugin implements Node {
     pluginFilepath: String
     pluginOptions: SitePluginPluginOptions
     resolve: String
+    ssrAPIs: [String]
     version: String
 }
 
@@ -2063,6 +2064,7 @@ enum SitePageFieldsEnum {
     pluginCreator___pluginOptions___tracedSVG
     pluginCreator___pluginOptions___withWebp
     pluginCreator___resolve
+    pluginCreator___ssrAPIs
     pluginCreator___version
 }
 
@@ -2217,6 +2219,7 @@ enum SitePluginFieldsEnum {
     pluginOptions___tracedSVG
     pluginOptions___withWebp
     resolve
+    ssrAPIs
     version
 }
 
@@ -2615,6 +2618,7 @@ input SitePluginFilterInput {
     pluginFilepath: StringQueryOperatorInput
     pluginOptions: SitePluginPluginOptionsFilterInput
     resolve: StringQueryOperatorInput
+    ssrAPIs: StringQueryOperatorInput
     version: StringQueryOperatorInput
 }
 

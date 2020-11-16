@@ -3,7 +3,9 @@ import styled from "styled-components"
 import MediaQuery from "react-responsive"
 import MobileLayout from "../components/mobileLayout"
 import PCLayout from "../components/pcLayout"
-import Footer from "../components/footer";
+import Footer from "../components/footer"
+import MainPage from "../components/mainPage"
+import {ParallaxProvider} from "react-scroll-parallax"
 
 export default function Home() {
     return (
@@ -19,10 +21,11 @@ export default function Home() {
             <MediaQuery query="(max-width: 767px)">
                 <BlogWrapper>
                     <MobileLayout>
-
+                        <ParallaxProvider>
+                            <MainPage/>
+                        </ParallaxProvider>
                     </MobileLayout>
                 </BlogWrapper>
-                <Footer/>
             </MediaQuery>
         </React.Fragment>
     )

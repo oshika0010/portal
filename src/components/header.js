@@ -1,7 +1,6 @@
 import React from "react"
 import {graphql, Link, useStaticQuery} from "gatsby"
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => {
     const data = useStaticQuery(
@@ -19,20 +18,11 @@ const Header = () => {
         <header>
             <h2>{data.site.siteMetadata.title}</h2>
             <LinkList>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/">
-                    Top</AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/author">
-                    Author</AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/posts">Posts</AniLink></li>
+                <li><Link to="/">
+                    Top</Link></li>
+                <li><Link to="/author">
+                    Author</Link></li>
+                <li><Link to="/posts">Posts</Link></li>
             </LinkList>
         </header>
     )

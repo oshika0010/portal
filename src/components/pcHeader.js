@@ -1,25 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+import Link from "gatsby"
 const PCHeader = () => {
     return (
         <PCHeaderComponents>
             <LinkList>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/">
-                    Top</AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/author">
-                    Author</AniLink></li>
-                <li><AniLink swipe
-                             top="exit"
-                             duration={1}
-                             to="/posts">Posts</AniLink></li>
+                <li><Link to="/">
+                    Top</Link></li>
+                <li><Link to="/author">
+                    Author</Link></li>
+                <li><Link to="/posts">Posts</Link></li>
             </LinkList>
         </PCHeaderComponents>
     )
