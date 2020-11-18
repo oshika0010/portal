@@ -5,11 +5,12 @@ import MobileLayout from "../components/mobileLayout"
 import PCLayout from "../components/pcLayout"
 import Footer from "../components/footer"
 import MainPage from "../components/mainPage"
-import {ParallaxProvider} from "react-scroll-parallax"
+import {ParallaxProvider} from "react-scroll-parallax/cjs"
+import {Parallax} from "react-parallax"
 
-export default function Home() {
+const Home = () => {
     return (
-        <React.Fragment>
+        <ParallaxProvider>
             <MediaQuery query="(min-width: 767px)">
                 <BlogWrapper>
                     <PCLayout>
@@ -21,18 +22,26 @@ export default function Home() {
             <MediaQuery query="(max-width: 767px)">
                 <BlogWrapper>
                     <MobileLayout>
-                        <ParallaxProvider>
-                            <MainPage/>
-                        </ParallaxProvider>
+                        <MainPage/>
                     </MobileLayout>
                 </BlogWrapper>
             </MediaQuery>
-        </React.Fragment>
+        </ParallaxProvider>
     )
 }
 
 const BlogWrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
 
 `
+
+const Head = styled.h1`
+  z-index: 500;
+  margin-top: 50vh;
+  height: 50vh;
+  width: 50vw;
+`
+
+export default Home

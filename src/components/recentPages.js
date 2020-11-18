@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import {useStaticQuery, graphql, Link} from "gatsby"
 import Img from "gatsby-image"
+import {useInView} from "react-intersection-observer"
+import NodeComponent from "./NodeComponent";
 
 const RecentPages = () => {
     const data = useStaticQuery(
@@ -20,7 +22,7 @@ const RecentPages = () => {
                             title
                             topImage {
                                 childImageSharp {
-                                    fixed(width: 100){
+                                    fixed(width: 300){
                                         ...GatsbyImageSharpFixed
                                     }
                                 }
@@ -42,38 +44,12 @@ const RecentPages = () => {
         <RecentPagesWrapper>
             <h1>RecentPages</h1>
             {recentNodes.map(node => (
-                <NodeComponent key={node.id}>
-                    <Img fixed={node.frontmatter.topImage.childImageSharp.fixed}/>
-                    <NodeItemWrapper>
-                        <Link to={node.fields.slug}>
-                            <ArticleTitle>{node.frontmatter.title}</ArticleTitle>
-                        </Link>
-                        <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                    </NodeItemWrapper>
-                </NodeComponent>
+                <NodeComponent key={node.id}
+                               node={node}/>
             ))}
         </RecentPagesWrapper>
     )
 }
-
-const NodeItemWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const ArticleDate = styled.div`
-  font-size: 0.8rem;
-`
-
-
-const NodeComponent = styled.div`
-  width: 80vw;
-  height: 70px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`
 
 const RecentPagesWrapper = styled.div`
   height: 100vh;
@@ -83,8 +59,5 @@ const RecentPagesWrapper = styled.div`
   align-items: center;
 `
 
-const ArticleTitle = styled.h4`
-  margin: 0;
-`
 
 export default RecentPages

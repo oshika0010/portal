@@ -1,6 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import squareBackGround from '../images/repeated-square.png'
+import {Parallax} from "react-parallax"
+
+const Hero = () => {
+    return (
+        <HeroWrapper>
+            <div>
+                <Parallax x={[350, -300]}>
+                    <Heading>Welcome!</Heading>
+                </Parallax>
+                <TagLine>This is my first blog powered by GatsbyJs</TagLine>
+            </div>
+        </HeroWrapper>
+    )
+}
 
 const HeroWrapper = styled.div`
   display: flex;
@@ -20,14 +34,5 @@ const TagLine = styled.h3`
   font-size: 1rem;
   font-weight: 300;
 `
-
-const Hero = () => (
-    <HeroWrapper>
-        <div>
-            <Heading>Welcome!</Heading>
-            <TagLine>This is my first blog powered by GatsbyJs</TagLine>
-        </div>
-    </HeroWrapper>
-)
 
 export default Hero;

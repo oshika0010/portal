@@ -4,6 +4,7 @@ import Hero from "./hero"
 import RecentPages from "./recentPages"
 
 const MainPage = () => {
+
     return (
         <MainPageContainer>
             <Hero/>
