@@ -19,8 +19,12 @@ const MainPageContainer = styled.div`
   margin-top: 8vh;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   text-align: center;
   font-size: 1.2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `
 
 const Triangle = styled.div`

@@ -15,7 +15,7 @@ const MobileLayout = (props) => {
 const BlogLayout = styled.div`
 position: relative;
   width: 100vw;
-  height: 95vh;
+  height: 100%
   display: flex;
   align-items: center;
   flex-direction: column;
