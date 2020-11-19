@@ -28,7 +28,6 @@ const NodeComponentWrapper = styled.div`
   margin-bottom: 20px;
   width: 70vw;
   height: 70vw;
-  background-color: #f9fff3;
   display: flex;
   flex-direction: column;
   align-items: center;

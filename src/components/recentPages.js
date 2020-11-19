@@ -57,7 +57,10 @@ const RecentPagesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+  background:linear-gradient(to bottom left, transparent 50%, wheat 50%) top left / 100% 20% no-repeat,
+    linear-gradient(to top right, transparent 50%, wheat 50%) bottom left / 100% 20% no-repeat;
+
+ `
 
 
 export default RecentPages

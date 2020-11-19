@@ -8,6 +8,7 @@ const MainPage = () => {
     return (
         <MainPageContainer>
             <Hero/>
+            <Triangle/>
             <RecentPages/>
         </MainPageContainer>
     )
@@ -22,10 +23,11 @@ const MainPageContainer = styled.div`
   font-size: 1.2rem;
 `
 
-const Div1 = styled.div`
-  background-color: black;
-  width: 50vw;
-  height: 300px;
+const Triangle = styled.div`
+  width: 100vw;
+  height: 200px;
+  background:linear-gradient(to bottom right, transparent 60%, wheat 50%) top left / 100% 50% no-repeat,
+    linear-gradient(to top right, transparent 60%, wheat 50%) bottom left / 100% 50% no-repeat;
 `
 
 const Div2 = styled.div`
