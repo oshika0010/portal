@@ -21,6 +21,7 @@ const MainPageContainer = styled.div`
   justify-content: center;
   text-align: center;
   font-size: 1.2rem;
+  overflow-y: scroll;
 `
 
 const Triangle = styled.div`
