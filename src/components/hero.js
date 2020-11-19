@@ -7,9 +7,7 @@ const Hero = () => {
     return (
         <HeroWrapper>
             <div>
-                <Parallax x={[350, -300]}>
-                    <Heading>Welcome!</Heading>
-                </Parallax>
+                <Heading>Welcome!</Heading>
                 <TagLine>This is my first blog powered by GatsbyJs</TagLine>
             </div>
         </HeroWrapper>

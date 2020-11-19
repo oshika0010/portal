@@ -9,7 +9,7 @@ import {ParallaxProvider} from "react-scroll-parallax/cjs"
 
 const Home = () => {
     return (
-        <ParallaxProvider>
+        <div>
             <MediaQuery query="(min-width: 767px)">
                 <BlogWrapper>
                     パソコン
@@ -23,7 +23,7 @@ const Home = () => {
                     </MobileLayout>
                 </BlogWrapper>
             </MediaQuery>
-        </ParallaxProvider>
+        </div>
     )
 }
 
