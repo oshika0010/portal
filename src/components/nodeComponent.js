@@ -13,7 +13,9 @@ const NodeComponent = (props) => {
         <NodeComponentWrapper
             ref={ref}
             inView={inView}>
-            <Img fixed={props.node.frontmatter.topImage.childImageSharp.fixed}/>
+            <ImageWrapper>
+                <Img fixed={props.node.frontmatter.topImage.childImageSharp.fixed}/>
+            </ImageWrapper>
             <NodeItemWrapper>
                 <Link to={props.node.fields.slug}>
                     <ArticleTitle>{props.node.frontmatter.title}</ArticleTitle>
@@ -23,6 +25,19 @@ const NodeComponent = (props) => {
         </NodeComponentWrapper>
     )
 }
+
+const OverRay = styled.div`
+  z-index: 1;
+  position: absolute;
+  width: 70vw;
+  height: 70vw;
+  background-color: rgba(255,255,255,0.29);
+`
+
+const ImageWrapper = styled.div`
+  width: 300px;
+  height: 163px;
+`
 
 const NodeComponentWrapper = styled.div`
   margin-bottom: 20px;

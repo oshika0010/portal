@@ -22,14 +22,16 @@ const PostsTerminal = ({data}) => {
             </MediaQuery>
             <MediaQuery query="(max-width: 767px)">
                 <MobileLayout>
-                    {data.allMarkdownRemark.nodes.map(node => (
-                        <PostsWrapper key={node.id}>
-                            <Link to={node.fields.slug}>
-                                <h2>{node.frontmatter.title}</h2>
-                            </Link>
-                            <p>{node.frontmatter.date}</p>
-                        </PostsWrapper>
-                    ))}
+                    <MobilePostsPageWrapper>
+                        {data.allMarkdownRemark.nodes.map(node => (
+                            <PostsWrapper key={node.id}>
+                                <Link to={node.fields.slug}>
+                                    <h2>{node.frontmatter.title}</h2>
+                                </Link>
+                                <p>{node.frontmatter.date}</p>
+                            </PostsWrapper>
+                        ))}
+                    </MobilePostsPageWrapper>
                 </MobileLayout>
             </MediaQuery>
         </React.Fragment>
@@ -51,6 +53,12 @@ export const query = graphql`
             }
         }
     }
+`
+
+const MobilePostsPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const PostsWrapper = styled.div`

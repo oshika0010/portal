@@ -25,6 +25,9 @@ const MobileHeader = () => {
                                          state={state}>
                             <CloseIcon/>
                         </CloseIconButton>
+                        <MobileMenuItem>
+                            作ったサイトへ飛ぶ
+                        </MobileMenuItem>
                     </MobileMenu>
                 )}
             </Transition>
@@ -57,7 +60,7 @@ const MobileHeaderWrapper = styled.header`
   left: 0;
   width: 100vw;
   background-color: white;
-  z-index: 100;
+  z-index: 3;
 `
 
 const BaseMenu = styled.div`
@@ -66,6 +69,9 @@ const BaseMenu = styled.div`
   left: -80vw;
   top: 0;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 const MobileMenu = styled(BaseMenu)`
@@ -74,6 +80,16 @@ const MobileMenu = styled(BaseMenu)`
     ${({state}) => (state === "entering" || state === "entered" ? 80 : 0)}vw
   ); 
   background-color: white;
+`
+
+const MobileMenuItem = styled(DefaultButton)`
+  width: 60vw;
+  height: 10vh;
+  padding: 2px 30px;
+  margin-top: 10vh;
+  font-size: 1rem;
+  color: gray;
+  text-align: right;
 `
 
 const LinkList = styled.ul`
@@ -104,6 +120,7 @@ const MenuIconButton = styled(DefaultButton)`
 const CloseIconButton = styled(DefaultButton)`
   float: right;
   transition: 0.5s;
+  position: absolute;
 `
 
 export default MobileHeader
